@@ -25,7 +25,6 @@ public class YOLOv2Definition implements Component3Dto3DGraphDefinition {
 	@Override
 	public <T extends NeuralComponent> Components3DGraphBuilder<?, ?, T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start) {
-		T a = null;
 		// input_1
 		return start
 				// conv2d_1
