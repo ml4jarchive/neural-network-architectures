@@ -15,7 +15,8 @@
  */
 package org.ml4j.nn.architectures.inception.inceptionv4.modules;
 
-import org.ml4j.nn.activationfunctions.factories.DifferentiableActivationFunctionFactory;
+import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.InceptionModuleDefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
@@ -30,17 +31,14 @@ import org.ml4j.nn.neurons.Neurons3D;
 public class InceptionADefinition implements InceptionModuleDefinition {
 
 	private InceptionV4WeightsLoader weightsLoader;
-	private DifferentiableActivationFunctionFactory activationFunctionFactory;
 	private int inceptionAModuleIndex;
 	private float regularisationLambda;
 	private float batchNormRegularisationLambda;
 	private boolean withFreezeOut;
 
-	public InceptionADefinition(InceptionV4WeightsLoader weightsLoader,
-			DifferentiableActivationFunctionFactory activationFunctionFactory, int inceptionAModuleIndex) {
+	public InceptionADefinition(InceptionV4WeightsLoader weightsLoader, int inceptionAModuleIndex) {
 		this.inceptionAModuleIndex = inceptionAModuleIndex;
 		this.weightsLoader = weightsLoader;
-		this.activationFunctionFactory = activationFunctionFactory;
 	}
 
 	@Override
@@ -71,7 +69,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath().withPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath().withPath()
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (initialComponentIndex + 1) + "_kernel0", 1, 1, 384, 64))
@@ -88,7 +86,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (initialComponentIndex + 2) + "_kernel0", 3, 3, 64, 96))
@@ -105,7 +103,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath().withPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath().withPath()
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (initialComponentIndex + 3) + "_kernel0", 1, 1, 384, 64))
@@ -122,7 +120,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (initialComponentIndex + 4) + "_kernel0", 3, 3, 64, 96))
@@ -139,7 +137,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (initialComponentIndex + 5) + "_kernel0", 3, 3, 96, 96))
@@ -156,7 +154,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath().withPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath().withPath()
 
 				.withAveragePoolingAxons().withFilterSize(3, 3).withStride(1, 1).withSamePadding()
 				.withConnectionToNeurons(new Neurons3D(35, 35, 384, false)).withConvolutionalAxons()
@@ -175,7 +173,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath()
 				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
 		
 	}

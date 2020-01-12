@@ -15,21 +15,29 @@ import org.ml4j.nn.neurons.Neurons;
 public class ComponentMetadata implements NeuralComponent {
 	
 	private Neurons inputNeurons;
+	private Neurons outputNeurons;
+
 	private String description;
 	
-	public ComponentMetadata(Neurons inputNeurons, String description) {
+	public ComponentMetadata(Neurons inputNeurons, Neurons outputNeurons, String description) {
 		this.inputNeurons = inputNeurons;
+		this.outputNeurons = outputNeurons;
 		this.description = description;
 	}
 
 	@Override
 	public NeuralComponentType getComponentType() {
-		return NeuralComponentType.CUSTOM;
+		return NeuralComponentType.createCustomBaseType(ComponentMetadata.class.getName());
 	}
 
 	@Override
 	public Neurons getInputNeurons() {
 		return inputNeurons;
+	}
+	
+	@Override
+	public Neurons getOutputNeurons() {
+		return outputNeurons;
 	}
 
 	public String getDescription() {
@@ -38,7 +46,7 @@ public class ComponentMetadata implements NeuralComponent {
 
 	@Override
 	public String toString() {
-		return "ComponentMetadata [inputNeurons=" + inputNeurons + ", description=" + description + "]";
+		return "ComponentMetadata [inputNeurons=" + inputNeurons + ", outputNeurons=" + outputNeurons + ", description="
+				+ description + "]";
 	}
-
 }

@@ -15,9 +15,11 @@
  */
 package org.ml4j.nn.architectures.inception.inceptionv4.modules;
 
-import org.ml4j.nn.activationfunctions.factories.DifferentiableActivationFunctionFactory;
+import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentBaseType;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
@@ -32,17 +34,19 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 
 	private InceptionV4WeightsLoader weightsLoader;
 	private float regularisationLambda;
-	private DifferentiableActivationFunctionFactory activationFunctionFactory;
 
-	public InceptionV4TailDefinition(InceptionV4WeightsLoader weightsLoader,
-			DifferentiableActivationFunctionFactory activationFunctionFactory) {
+	public InceptionV4TailDefinition(InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
-		this.activationFunctionFactory = activationFunctionFactory;
 	}
 
 	@Override
 	public Neurons3D getInputNeurons() {
 		return new Neurons3D(8, 8, 1536, false);
+	}
+	
+	@Override
+	public Neurons getOutputNeurons() {
+		return new Neurons(1001, false);
 	}
 
 	public <T extends NeuralComponent> ComponentsGraphBuilder<?, T> createComponentGraph(
@@ -53,11 +57,11 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 				.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
 				.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda)).withBiasUnit()
 				.withConnectionToNeurons(new Neurons(1001, false))
-				.withActivationFunction(activationFunctionFactory.createSoftmaxActivationFunction());
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
 	}
 
 	@Override
 	public NeuralComponentType getComponentType() {
-		return NeuralComponentType.DEFINITION;
+		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 }

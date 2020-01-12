@@ -15,7 +15,6 @@
  */
 package org.ml4j.nn.architectures.inception.inceptionv4;
 
-import org.ml4j.nn.activationfunctions.factories.DifferentiableActivationFunctionFactory;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionADefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionBDefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionCDefinition;
@@ -27,6 +26,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
+import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
@@ -34,12 +34,10 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition {
 
-	private DifferentiableActivationFunctionFactory activationFunctionFactory;
 	private InceptionV4WeightsLoader weightsLoader;
 
-	public InceptionV4Definition(DifferentiableActivationFunctionFactory activationFunctionFactory,
+	public InceptionV4Definition(
 			InceptionV4WeightsLoader weightsLoader) {
-		this.activationFunctionFactory = activationFunctionFactory;
 		this.weightsLoader = weightsLoader;
 	}
 
@@ -49,34 +47,39 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 	}
 
 	@Override
+	public Neurons getOutputNeurons() {
+		return new Neurons(1001, false);
+	}
+
+	@Override
 	public <T extends NeuralComponent> ComponentsGraphBuilder<?, T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start) {
 		return start
 				// Initial Stem...
-				.withComponentDefinition(new InceptionV4StemDefinition(weightsLoader, activationFunctionFactory))
+				.withComponentDefinition(new InceptionV4StemDefinition(weightsLoader))
 				// followed by 4 InceptionA modules...
-				.withComponentDefinition(new InceptionADefinition(weightsLoader, activationFunctionFactory, 0))
-				.withComponentDefinition(new InceptionADefinition(weightsLoader, activationFunctionFactory, 1))
-				.withComponentDefinition(new InceptionADefinition(weightsLoader, activationFunctionFactory, 2))
-				.withComponentDefinition(new InceptionADefinition(weightsLoader, activationFunctionFactory, 3))
+				.withComponentDefinition(new InceptionADefinition(weightsLoader, 0))
+				.withComponentDefinition(new InceptionADefinition(weightsLoader, 1))
+				.withComponentDefinition(new InceptionADefinition(weightsLoader, 2))
+				.withComponentDefinition(new InceptionADefinition(weightsLoader, 3))
 				// followed by a ReductionA module...
-				.withComponentDefinition(new ReductionADefinition(weightsLoader, activationFunctionFactory))
+				.withComponentDefinition(new ReductionADefinition(weightsLoader))
 				// followed by 7 InceptionB modules...
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 0))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 1))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 2))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 3))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 4))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 5))
-				.withComponentDefinition(new InceptionBDefinition(weightsLoader, activationFunctionFactory, 6))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 0))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 1))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 2))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 3))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 4))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 5))
+				.withComponentDefinition(new InceptionBDefinition(weightsLoader, 6))
 				// followed by a ReductionB module...
-				.withComponentDefinition(new ReductionBDefinition(weightsLoader, activationFunctionFactory))
+				.withComponentDefinition(new ReductionBDefinition(weightsLoader))
 				// followed by 3 InceptionC modules...
-				.withComponentDefinition(new InceptionCDefinition(weightsLoader, activationFunctionFactory, 0))
-				.withComponentDefinition(new InceptionCDefinition(weightsLoader, activationFunctionFactory, 1))
-				.withComponentDefinition(new InceptionCDefinition(weightsLoader, activationFunctionFactory, 2))
+				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 0))
+				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 1))
+				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 2))
 				// ending with final Tail
-				.withComponentDefinition(new InceptionV4TailDefinition(weightsLoader, activationFunctionFactory));
+				.withComponentDefinition(new InceptionV4TailDefinition(weightsLoader));
 
 	}
 }

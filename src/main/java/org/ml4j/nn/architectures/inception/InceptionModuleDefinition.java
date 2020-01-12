@@ -16,9 +16,16 @@
 package org.ml4j.nn.architectures.inception;
 
 import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
+import org.ml4j.nn.neurons.Neurons3D;
 
 /**
  * @author Michael Lavelle
  */
 public interface InceptionModuleDefinition extends Component3Dto3DGraphDefinition {
+
+	@Override
+	default Neurons3D getOutputNeurons() {
+		return getInputNeurons();
+	}
+	
 }

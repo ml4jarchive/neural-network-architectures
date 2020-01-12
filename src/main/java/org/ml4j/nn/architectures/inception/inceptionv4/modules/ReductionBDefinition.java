@@ -15,9 +15,11 @@
  */
 package org.ml4j.nn.architectures.inception.inceptionv4.modules;
 
-import org.ml4j.nn.activationfunctions.factories.DifferentiableActivationFunctionFactory;
+import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
+import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
+import org.ml4j.nn.components.NeuralComponentBaseType;
 import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.builders.componentsgraph.Components3DGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
@@ -34,17 +36,19 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 	private boolean withFreezeOut;
 	private float regularisationLambda;
 	private float batchNormRegularisationLambda;
-	private DifferentiableActivationFunctionFactory activationFunctionFactory;
 
-	public ReductionBDefinition(InceptionV4WeightsLoader weightsLoader,
-			DifferentiableActivationFunctionFactory activationFunctionFactory) {
+	public ReductionBDefinition(InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
-		this.activationFunctionFactory = activationFunctionFactory;
 	}
 	
 	@Override
 	public Neurons3D getInputNeurons() {
 		return new Neurons3D(17, 17, 1024, false);
+	}
+
+	@Override
+	public Neurons3D getOutputNeurons() {
+		return new Neurons3D(8, 8, 1536, false);
 	}
 
 	public <T extends NeuralComponent> Components3DGraphBuilder<?, ?, T> createComponentGraph(
@@ -67,7 +71,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (115) + "_kernel0", 3, 3, 192, 192))
@@ -84,7 +88,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 192, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath().withPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath().withPath()
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (116) + "_kernel0", 1, 1, 1024, 256))
@@ -101,7 +105,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (117) + "_kernel0", 7, 1, 256, 256))
@@ -118,7 +122,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (118) + "_kernel0", 1, 7, 256, 320))
@@ -135,7 +139,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 320, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction())
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU))
 				.withConvolutionalAxons()
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
 						"conv2d_" + (119) + "_kernel0", 3, 3, 320, 320))
@@ -152,7 +156,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 320, false))
-				.withActivationFunction(activationFunctionFactory.createReluActivationFunction()).endPath().withPath()
+				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU)).endPath().withPath()
 				.withMaxPoolingAxons().withFilterSize(3, 3).withStride(2, 2).withValidPadding()
 				.withConnectionToNeurons(new Neurons3D(8, 8, 1024, false)).endPath()
 				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
@@ -160,6 +164,6 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 
 	@Override
 	public NeuralComponentType getComponentType() {
-		return NeuralComponentType.DEFINITION;
+		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 }

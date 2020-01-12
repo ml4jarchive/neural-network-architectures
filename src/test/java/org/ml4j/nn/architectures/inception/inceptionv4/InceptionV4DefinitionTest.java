@@ -44,7 +44,7 @@ public class InceptionV4DefinitionTest extends InceptionV4DefinitionTestBase<Def
 	}
 
 	@Override
-	protected void runAssertionsOnCreatedComponentGraph(
+	protected void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition, 
 			ComponentsGraphBuilder<?, DefaultChainableDirectedComponent<?, ?>> componentGraph) {
 		
 		List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents = componentGraph.getComponents();
@@ -60,7 +60,7 @@ public class InceptionV4DefinitionTest extends InceptionV4DefinitionTestBase<Def
 		DefaultChainableDirectedComponent<?, DirectedComponentsContext> componentChain = dummyComponentFactory.createDirectedComponentChain(sequentialComponents);
 	
 		int batchSize = 10;
-		int inputFeatureCount = 299 * 299 * 3;
+		int inputFeatureCount = inceptionV4Definition.getInputNeurons().getNeuronCountExcludingBias();
 		int expectedOutputFeatureCount = 1001;
 		
 		Matrix inputMatrix = new JBlasRowMajorMatrixFactory().createMatrix(inputFeatureCount, batchSize);
