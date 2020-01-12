@@ -217,7 +217,7 @@ public class YOLOv2Definition implements Component3Dto3DGraphDefinition {
 					.withActivationFunction(ActivationFunctionType.createCustomBaseType(LEAKY_RELU_CUSTOM_BASE_TYPE_ID))
 					// space_to_depth_x2
 					// TODO - Needs to be space-to-depth instead of convolutional axons
-					.with3DComponent(a, new Neurons3D(19, 19, 256, false))
+					//.with3DComponent(a, new Neurons3D(19, 19, 256, false))
 					.withConvolutionalAxons()
 					.withConnectionToNeurons(new Neurons3D(19, 19, 256, false))
 				.endPath()
