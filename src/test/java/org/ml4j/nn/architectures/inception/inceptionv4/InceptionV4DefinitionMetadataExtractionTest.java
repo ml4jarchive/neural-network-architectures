@@ -29,7 +29,7 @@ public class InceptionV4DefinitionMetadataExtractionTest extends InceptionV4Defi
 	}
 
 	@Override
-	protected void runAssertionsOnCreatedComponentGraph(
+	protected void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition,
 			ComponentsGraphBuilder<?, ComponentMetadata> componentGraph) {
 		
 		List<ComponentMetadata> sequentialComponents = componentGraph.getComponents();
