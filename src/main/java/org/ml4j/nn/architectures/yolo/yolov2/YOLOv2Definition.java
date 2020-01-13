@@ -1,4 +1,4 @@
-package org.ml4j.nn.architectures.yolo;
+package org.ml4j.nn.architectures.yolo.yolov2;
 
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.components.NeuralComponent;

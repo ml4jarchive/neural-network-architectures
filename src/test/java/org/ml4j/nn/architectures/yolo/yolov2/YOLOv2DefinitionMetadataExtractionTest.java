@@ -1,11 +1,11 @@
-package org.ml4j.nn.architectures.inception.inceptionv4;
+package org.ml4j.nn.architectures.yolo.yolov2;
 
 import java.util.List;
 
 import org.junit.Assert;
 import org.ml4j.nn.components.ComponentMetadata;
 import org.ml4j.nn.components.ComponentMetadataFactory;
-import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +21,9 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Michael Lavelle
  */
-public class InceptionV4DefinitionMetadataExtractionTest extends InceptionV4DefinitionTestBase<ComponentMetadata> {
+public class YOLOv2DefinitionMetadataExtractionTest extends YOLOv2DefinitionTestBase<ComponentMetadata> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(InceptionV4DefinitionMetadataExtractionTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(YOLOv2DefinitionMetadataExtractionTest.class);
 	
 	@Override
 	protected NeuralComponentFactory<ComponentMetadata> createNeuralComponentFactory() {
@@ -31,12 +31,12 @@ public class InceptionV4DefinitionMetadataExtractionTest extends InceptionV4Defi
 	}
 
 	@Override
-	protected void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition,
-			InitialComponentsGraphBuilder<ComponentMetadata> componentGraph) {
+	protected void runAssertionsOnCreatedComponentGraph(YOLOv2Definition yoloV2Definition,
+			InitialComponents3DGraphBuilder<ComponentMetadata> componentGraph) {
 		
 		List<ComponentMetadata> sequentialComponents = componentGraph.getComponents();
 		
-		Assert.assertEquals(31, sequentialComponents.size());
+		Assert.assertEquals(46, sequentialComponents.size());
 		
 		for (ComponentMetadata component : sequentialComponents) {
 			LOGGER.debug(component.toString());

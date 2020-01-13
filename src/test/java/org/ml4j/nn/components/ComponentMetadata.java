@@ -1,4 +1,4 @@
-package org.ml4j.nn.architectures.inception.inceptionv4;
+package org.ml4j.nn.components;
 
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentType;

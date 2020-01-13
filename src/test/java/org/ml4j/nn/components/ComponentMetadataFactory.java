@@ -1,4 +1,4 @@
-package org.ml4j.nn.architectures.inception.inceptionv4;
+package org.ml4j.nn.components;
 
 import java.util.List;
 
@@ -94,10 +94,9 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	}
 
 	@Override
-	public <S extends ComponentMetadata> ComponentMetadata createComponent(Neurons leftNeurons, Neurons rightNeurons,
-			NeuralComponentType<S> neuralComponentType) {
-		return new ComponentMetadata(leftNeurons, rightNeurons, "Component type:" + neuralComponentType);
+	public <S extends ComponentMetadata> ComponentMetadata createComponent(Neurons arg0, Neurons arg1,
+			NeuralComponentType<S> componentType) {
+		return new ComponentMetadata(arg0, arg1, "Component type:" + componentType);
 	}
-
 	
 }
