@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Integration test with some mock components and some real components, which creates an actual InceptionV4Network,
+ * Integration test with some mock components and some real components, which creates an actual YOLOv2Network,
  * and forward propagates a neurons activation through the network to ensure the output matches the expected output
  * dimensions.
  * 
