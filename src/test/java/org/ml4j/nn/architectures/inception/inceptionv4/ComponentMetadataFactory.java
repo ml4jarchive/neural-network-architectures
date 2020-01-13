@@ -94,8 +94,10 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	}
 
 	@Override
-	public ComponentMetadata createComponent(Neurons arg0, Neurons arg1, NeuralComponentType<ComponentMetadata> arg2) {
-		return new ComponentMetadata(arg0, arg1, "Component type:" + arg2);
+	public <S extends ComponentMetadata> ComponentMetadata createComponent(Neurons leftNeurons, Neurons rightNeurons,
+			NeuralComponentType<S> neuralComponentType) {
+		return new ComponentMetadata(leftNeurons, rightNeurons, "Component type:" + neuralComponentType);
 	}
 
+	
 }
