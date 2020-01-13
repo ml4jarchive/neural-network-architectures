@@ -23,8 +23,9 @@ import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionV4TailDe
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.ReductionADefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.ReductionBDefinition;
 import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
@@ -52,8 +53,8 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 	}
 
 	@Override
-	public <T extends NeuralComponent> ComponentsGraphBuilder<?, T> createComponentGraph(
-			InitialComponents3DGraphBuilder<T> start) {
+	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
+			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start
 				// Initial Stem...
 				.withComponentDefinition(new InceptionV4StemDefinition(weightsLoader))
