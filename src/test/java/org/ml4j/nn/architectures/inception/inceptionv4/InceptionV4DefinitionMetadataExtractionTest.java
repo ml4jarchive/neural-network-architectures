@@ -3,7 +3,7 @@ package org.ml4j.nn.architectures.inception.inceptionv4;
 import java.util.List;
 
 import org.junit.Assert;
-import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +30,7 @@ public class InceptionV4DefinitionMetadataExtractionTest extends InceptionV4Defi
 
 	@Override
 	protected void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition,
-			ComponentsGraphBuilder<?, ComponentMetadata> componentGraph) {
+			InitialComponentsGraphBuilder<ComponentMetadata> componentGraph) {
 		
 		List<ComponentMetadata> sequentialComponents = componentGraph.getComponents();
 		

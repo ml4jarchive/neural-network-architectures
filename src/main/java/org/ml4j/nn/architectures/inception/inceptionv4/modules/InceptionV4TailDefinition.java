@@ -21,8 +21,9 @@ import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentBaseType;
 import org.ml4j.nn.components.NeuralComponentType;
-import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons;
 import org.ml4j.nn.neurons.Neurons3D;
@@ -49,8 +50,8 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 		return new Neurons(1001, false);
 	}
 
-	public <T extends NeuralComponent> ComponentsGraphBuilder<?, T> createComponentGraph(
-			InitialComponents3DGraphBuilder<T> start) {
+	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
+			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start.withSynapses().withAveragePoolingAxons().withStride(1, 1).withFilterSize(8, 8).withValidPadding()
 				.withConnectionToNeurons(new Neurons3D(1, 1, 1536, false)).endSynapses().withFullyConnectedAxons()
 				.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
@@ -61,7 +62,7 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	}
 
 	@Override
-	public NeuralComponentType getComponentType() {
+	public NeuralComponentType<?> getComponentType() {
 		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 }

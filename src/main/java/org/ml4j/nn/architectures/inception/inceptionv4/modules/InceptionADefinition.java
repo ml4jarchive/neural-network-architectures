@@ -20,8 +20,8 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.InceptionModuleDefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.builders.componentsgraph.Components3DGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons3D;
 
@@ -47,8 +47,8 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 	}
 
 	@Override
-	public <T extends NeuralComponent> Components3DGraphBuilder<?, ?, T> createComponentGraph(
-			InitialComponents3DGraphBuilder<T> start) {
+	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		
 		int initialComponentIndex = inceptionAModuleIndex * 7 + 12;
 		return start

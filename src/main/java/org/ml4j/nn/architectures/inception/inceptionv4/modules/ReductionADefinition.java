@@ -19,10 +19,8 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.NeuralComponentBaseType;
-import org.ml4j.nn.components.NeuralComponentType;
-import org.ml4j.nn.components.builders.componentsgraph.Components3DGraphBuilder;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
+import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.definitions.Component3Dto3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons3D;
@@ -51,8 +49,9 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 		return new Neurons3D(17, 17, 1024, false);
 	}
 
-	public <T extends NeuralComponent> Components3DGraphBuilder<?, ?, T> createComponentGraph(
-			InitialComponents3DGraphBuilder<T> start) {
+	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
+		
 		return start.withParallelPaths().withPath().withConvolutionalAxons().withFilterSize(3, 3)
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights("conv2d_40_kernel0", 3, 3, 384, 384))
 				.withStride(2, 2).withFilterCount(384).withValidPadding()
@@ -108,10 +107,5 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withMaxPoolingAxons().withFilterSize(3, 3).withStride(2, 2).withValidPadding()
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false)).endPath()
 				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
-	}
-
-	@Override
-	public NeuralComponentType getComponentType() {
-		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 }

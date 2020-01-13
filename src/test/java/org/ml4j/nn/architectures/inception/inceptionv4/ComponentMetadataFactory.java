@@ -6,6 +6,7 @@ import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons;
@@ -90,6 +91,11 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	@Override
 	public <N extends Neurons> ComponentMetadata createPassThroughAxonsComponent(N arg0, N arg1) {
 		return new ComponentMetadata(arg0, arg1, "Pass through Axons Component");
+	}
+
+	@Override
+	public ComponentMetadata createComponent(Neurons arg0, Neurons arg1, NeuralComponentType<ComponentMetadata> arg2) {
+		return new ComponentMetadata(arg0, arg1, "Component type:" + arg2);
 	}
 
 }
