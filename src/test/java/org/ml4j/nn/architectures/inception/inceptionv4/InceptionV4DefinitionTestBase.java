@@ -9,6 +9,7 @@ import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.sessions.Session;
+import org.ml4j.nn.sessions.SessionImpl;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
