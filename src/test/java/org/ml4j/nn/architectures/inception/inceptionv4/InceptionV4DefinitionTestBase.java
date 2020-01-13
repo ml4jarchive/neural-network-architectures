@@ -6,11 +6,9 @@ import org.junit.Test;
 import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.builders.componentsgraph.ComponentsGraphBuilder;
-import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
-import org.ml4j.nn.components.builders.initial.InitialComponents3DGraphBuilderImpl;
+import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
-import org.ml4j.nn.neurons.Neurons3D;
+import org.ml4j.nn.sessions.Session;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -39,25 +37,26 @@ public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> {
 		Mockito.when(mockAxonsContext.withFreezeOut(Mockito.anyBoolean())).thenReturn(mockAxonsContext);
 	}
 	
-	private InitialComponents3DGraphBuilder<T> createGraphBuilder(Neurons3D initialNeurons) {
-		return new InitialComponents3DGraphBuilderImpl<>(neuralComponentFactory, mockDirectedComponentsContext, initialNeurons) ;
-	}
-	
-	protected abstract void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition, ComponentsGraphBuilder<?, T>  componentGraph);
+	protected abstract void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition, 
+			InitialComponentsGraphBuilder<T>  componentGraph);
 
 	@Test
 	public void testComponentGraphCreation() {
+	
+		// Start new session, given the component factory and the runtime context.
+		Session<T> session = new SessionImpl<>(neuralComponentFactory, mockDirectedComponentsContext);
 		
 		// Create the InceptionV4Definition
 		InceptionV4Definition inceptionV4Definition = new InceptionV4Definition( 
 				mockInceptionV4WeightsLoader);
-				
-		// Buiilder a component graph, given this InceptionV4Definition and the components factories.
-		ComponentsGraphBuilder<?, T> componentGraph 
-				= inceptionV4Definition.createComponentGraph(createGraphBuilder(inceptionV4Definition.getInputNeurons()));
 		
+		// Build a component graph, given this Session and the InceptionV4Definition.
+		InitialComponentsGraphBuilder<T> componentGraph = session.startWith(inceptionV4Definition);
+			
+		// Assert that we now have a component graph.
 		Assert.assertNotNull(componentGraph);
 		
+		// Run additional assertions
 		runAssertionsOnCreatedComponentGraph(inceptionV4Definition, componentGraph);
 	}
 

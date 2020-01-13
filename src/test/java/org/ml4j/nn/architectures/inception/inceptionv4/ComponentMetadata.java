@@ -26,7 +26,7 @@ public class ComponentMetadata implements NeuralComponent {
 	}
 
 	@Override
-	public NeuralComponentType getComponentType() {
+	public NeuralComponentType<NeuralComponent> getComponentType() {
 		return NeuralComponentType.createCustomBaseType(ComponentMetadata.class.getName());
 	}
 
