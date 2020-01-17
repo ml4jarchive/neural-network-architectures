@@ -23,6 +23,8 @@ public class ComponentMetadata extends NeuralComponentAdapter<Neurons, Neurons> 
 	public ComponentMetadata(Neurons inputNeurons, Neurons outputNeurons, String description) {
 		super(NeuralComponentType.createCustomBaseType(ComponentMetadata.class.getName()), inputNeurons, outputNeurons);
 		this.description = description;
+		this.inputNeurons = inputNeurons;
+		this.outputNeurons = outputNeurons;
 	}
 
 	public String getDescription() {
