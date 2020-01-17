@@ -1,42 +1,20 @@
 package org.ml4j.nn.architectures.inception.inceptionv4;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.ml4j.nn.axons.AxonsContext;
 import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
+import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinitionTestBase;
 import org.ml4j.nn.sessions.Session;
 import org.ml4j.nn.sessions.SessionImpl;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> {
+public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> extends Component3DtoNon3DGraphDefinitionTestBase<T, InceptionV4Definition> {
 	
 	@Mock
-	private InceptionV4WeightsLoader mockInceptionV4WeightsLoader;
-	
-	@Mock
-	protected DirectedComponentsContext mockDirectedComponentsContext;
-	
-	@Mock
-	private AxonsContext mockAxonsContext;
-		
-	protected NeuralComponentFactory<T> neuralComponentFactory;
-	
-	protected abstract NeuralComponentFactory<T> createNeuralComponentFactory();
-	
-	@Before
-	public void setUp() {
-		MockitoAnnotations.initMocks(this);
-		this.neuralComponentFactory = createNeuralComponentFactory();
-		Mockito.when(mockDirectedComponentsContext.getContext(Mockito.any(), Mockito.any())).thenReturn(mockAxonsContext);
-		Mockito.when(mockAxonsContext.withRegularisationLambda(Mockito.anyFloat())).thenReturn(mockAxonsContext);
-		Mockito.when(mockAxonsContext.withFreezeOut(Mockito.anyBoolean())).thenReturn(mockAxonsContext);
-	}
+	protected InceptionV4WeightsLoader mockInceptionV4WeightsLoader;
 	
 	protected abstract void runAssertionsOnCreatedComponentGraph(InceptionV4Definition inceptionV4Definition, 
 			InitialComponentsGraphBuilder<T>  componentGraph);
@@ -59,6 +37,16 @@ public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> {
 		
 		// Run additional assertions
 		runAssertionsOnCreatedComponentGraph(inceptionV4Definition, componentGraph);
+	}
+
+	@Override
+	protected InceptionV4Definition createDefinitionToTest() {
+		return new InceptionV4Definition(mockInceptionV4WeightsLoader);
+	}
+
+	@Override
+	protected Session<T> createSession(NeuralComponentFactory<T> componentFactory, DirectedComponentsContext context) {
+		return new SessionImpl<>(componentFactory, context);
 	}
 
 }

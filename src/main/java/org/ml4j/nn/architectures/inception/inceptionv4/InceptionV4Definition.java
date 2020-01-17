@@ -35,6 +35,11 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private InceptionV4WeightsLoader weightsLoader;
 
 	public InceptionV4Definition(

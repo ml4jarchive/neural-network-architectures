@@ -1,7 +1,5 @@
 package org.ml4j.nn.components;
 
-import org.ml4j.nn.components.NeuralComponent;
-import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.neurons.Neurons;
 
 /**
@@ -12,32 +10,19 @@ import org.ml4j.nn.neurons.Neurons;
  * 
  * @author Michael Lavelle
  */
-public class ComponentMetadata implements NeuralComponent {
+public class ComponentMetadata extends NeuralComponentAdapter<Neurons, Neurons> implements NeuralComponent {
 	
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
 	private Neurons inputNeurons;
 	private Neurons outputNeurons;
-
 	private String description;
 	
 	public ComponentMetadata(Neurons inputNeurons, Neurons outputNeurons, String description) {
-		this.inputNeurons = inputNeurons;
-		this.outputNeurons = outputNeurons;
+		super(NeuralComponentType.createCustomBaseType(ComponentMetadata.class.getName()), inputNeurons, outputNeurons);
 		this.description = description;
-	}
-
-	@Override
-	public NeuralComponentType<NeuralComponent> getComponentType() {
-		return NeuralComponentType.createCustomBaseType(ComponentMetadata.class.getName());
-	}
-
-	@Override
-	public Neurons getInputNeurons() {
-		return inputNeurons;
-	}
-	
-	@Override
-	public Neurons getOutputNeurons() {
-		return outputNeurons;
 	}
 
 	public String getDescription() {

@@ -12,6 +12,11 @@ import org.ml4j.nn.neurons.Neurons3D;
 
 public class YOLOv2Definition implements Component3Dto3DGraphDefinition {
 	
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private static final String LEAKY_RELU_CUSTOM_BASE_TYPE_ID = "LEAKY_RELU";
 	
 	public static final ActivationFunctionType LEAKY_RELU_ACTIVATION_FUNCTION_TYPE 
