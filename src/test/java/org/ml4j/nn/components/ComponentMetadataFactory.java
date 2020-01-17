@@ -6,7 +6,6 @@ import org.ml4j.Matrix;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
-import org.ml4j.nn.components.NeuralComponentType;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons;

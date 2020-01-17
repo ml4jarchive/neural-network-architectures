@@ -30,6 +30,11 @@ import org.ml4j.nn.neurons.Neurons3D;
  */
 public class InceptionBDefinition implements InceptionModuleDefinition {
 
+	/**
+	 * Default serialization id.
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private InceptionV4WeightsLoader weightsLoader;
 	private int inceptionBModuleIndex;
 	private float regularisationLambda;
