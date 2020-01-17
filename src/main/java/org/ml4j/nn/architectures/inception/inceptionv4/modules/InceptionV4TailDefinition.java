@@ -57,13 +57,16 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 
 	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
-		return start.withSynapses().withAveragePoolingAxons().withStride(1, 1).withFilterSize(8, 8).withValidPadding()
-				.withConnectionToNeurons(new Neurons3D(1, 1, 1536, false)).endSynapses().withFullyConnectedAxons()
-				.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
-				.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
-				.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda)).withBiasUnit()
-				.withConnectionToNeurons(new Neurons(1001, false))
-				.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
+		return start
+					.withAveragePoolingAxons()
+						.withStride(1, 1).withFilterSize(8, 8).withValidPadding()
+						.withConnectionToNeurons(new Neurons3D(1, 1, 1536, false))
+					.withFullyConnectedAxons()
+						.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
+						.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
+						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda)).withBiasUnit()
+					.withConnectionToNeurons(new Neurons(1001, false))
+					.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
 	}
 
 	@Override
