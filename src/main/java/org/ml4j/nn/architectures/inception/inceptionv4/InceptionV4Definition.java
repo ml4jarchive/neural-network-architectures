@@ -28,7 +28,6 @@ import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBui
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons1D;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
@@ -55,7 +54,7 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 
 	@Override
 	public Neurons getOutputNeurons() {
-		return new Neurons1D(1001, false);
+		return new Neurons(1001, false);
 	}
 
 	@Override

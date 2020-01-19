@@ -26,7 +26,6 @@ import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBui
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.definitions.Component3DtoNon3DGraphDefinition;
 import org.ml4j.nn.neurons.Neurons;
-import org.ml4j.nn.neurons.Neurons1D;
 import org.ml4j.nn.neurons.Neurons3D;
 
 /**
@@ -53,7 +52,7 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	
 	@Override
 	public Neurons getOutputNeurons() {
-		return new Neurons1D(1001, false);
+		return new Neurons(1001, false);
 	}
 
 	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
@@ -67,7 +66,7 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 						.withBiasUnit()
 						.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
 						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda))
-					.withConnectionToNeurons(new Neurons1D(1001, false))
+					.withConnectionToNeurons(new Neurons(1001, false))
 					.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
 	}
 
