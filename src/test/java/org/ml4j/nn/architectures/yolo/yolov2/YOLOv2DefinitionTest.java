@@ -65,7 +65,7 @@ public class YOLOv2DefinitionTest extends YOLOv2DefinitionTestBase<DefaultChaina
 		
 		Matrix inputMatrix = new JBlasRowMajorMatrixFactory().createMatrix(inputFeatureCount, batchSize);
 
-		NeuronsActivation input = new NeuronsActivationImpl(inputMatrix, NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
+		NeuronsActivation input = new NeuronsActivationImpl(yoloV2Definition.getInputNeurons(), inputMatrix, NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
 	
 		DefaultChainableDirectedComponentActivation output = componentChain.forwardPropagate(input, mockDirectedComponentsContext);
 		

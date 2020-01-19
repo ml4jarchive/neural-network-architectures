@@ -65,7 +65,7 @@ public class InceptionV4DefinitionTest extends InceptionV4DefinitionTestBase<Def
 		
 		Matrix inputMatrix = new JBlasRowMajorMatrixFactory().createMatrix(inputFeatureCount, batchSize);
 
-		NeuronsActivation input = new NeuronsActivationImpl(inputMatrix, NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
+		NeuronsActivation input = new NeuronsActivationImpl(inceptionV4Definition.getInputNeurons(), inputMatrix, NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
 	
 		DefaultChainableDirectedComponentActivation output = componentChain.forwardPropagate(input, mockDirectedComponentsContext);
 		
