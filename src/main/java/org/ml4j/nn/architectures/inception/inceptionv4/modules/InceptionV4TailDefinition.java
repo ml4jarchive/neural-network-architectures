@@ -63,8 +63,9 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 						.withConnectionToNeurons(new Neurons3D(1, 1, 1536, false))
 					.withFullyConnectedAxons()
 						.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
+						.withBiasUnit()
 						.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
-						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda)).withBiasUnit()
+						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda))
 					.withConnectionToNeurons(new Neurons(1001, false))
 					.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
 	}
