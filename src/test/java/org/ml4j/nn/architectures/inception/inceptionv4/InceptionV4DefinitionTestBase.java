@@ -30,7 +30,7 @@ public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> e
 				mockInceptionV4WeightsLoader);
 		
 		// Build a component graph, given this Session and the InceptionV4Definition.
-		InitialComponentsGraphBuilder<T> componentGraph = session.startWith(inceptionV4Definition);
+		InitialComponentsGraphBuilder<T> componentGraph = session.buildComponentGraph().startWith(inceptionV4Definition);
 			
 		// Assert that we now have a component graph.
 		Assert.assertNotNull(componentGraph);
