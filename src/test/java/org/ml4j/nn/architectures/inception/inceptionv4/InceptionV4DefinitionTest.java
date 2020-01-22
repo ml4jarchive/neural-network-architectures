@@ -6,12 +6,12 @@ import org.junit.Assert;
 import org.ml4j.Matrix;
 import org.ml4j.MatrixFactory;
 import org.ml4j.jblas.JBlasRowMajorMatrixFactory;
-import org.ml4j.nn.components.DirectedComponentsContext;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponentsGraphBuilder;
 import org.ml4j.nn.components.factories.DirectedComponentFactory;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponent;
 import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivation;
+import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.factories.DummyDirectedComponentFactoryImpl;
 import org.ml4j.nn.neurons.NeuronsActivation;
 import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
@@ -57,7 +57,7 @@ public class InceptionV4DefinitionTest extends InceptionV4DefinitionTestBase<Def
 		}
 		
 		// Create a component chain from the components
-		DefaultChainableDirectedComponent<?, DirectedComponentsContext> componentChain = dummyComponentFactory.createDirectedComponentChain(sequentialComponents);
+		DefaultDirectedComponentChain componentChain = dummyComponentFactory.createDirectedComponentChain(sequentialComponents);
 	
 		int batchSize = 10;
 		int inputFeatureCount = inceptionV4Definition.getInputNeurons().getNeuronCountExcludingBias();
