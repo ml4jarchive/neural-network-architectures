@@ -14,8 +14,8 @@ import org.ml4j.nn.components.onetone.DefaultChainableDirectedComponentActivatio
 import org.ml4j.nn.components.onetone.DefaultDirectedComponentChain;
 import org.ml4j.nn.factories.DummyDirectedComponentFactoryImpl;
 import org.ml4j.nn.neurons.NeuronsActivation;
-import org.ml4j.nn.neurons.NeuronsActivationFeatureOrientation;
 import org.ml4j.nn.neurons.NeuronsActivationImpl;
+import org.ml4j.nn.neurons.format.NeuronsActivationFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,7 +65,7 @@ public class YOLOv2DefinitionTest extends YOLOv2DefinitionTestBase<DefaultChaina
 		
 		Matrix inputMatrix = new JBlasRowMajorMatrixFactory().createMatrix(inputFeatureCount, batchSize);
 
-		NeuronsActivation input = new NeuronsActivationImpl(yoloV2Definition.getInputNeurons(), inputMatrix, NeuronsActivationFeatureOrientation.ROWS_SPAN_FEATURE_SET);
+		NeuronsActivation input = new NeuronsActivationImpl(yoloV2Definition.getInputNeurons(), inputMatrix, NeuronsActivationFormat.ROWS_SPAN_FEATURE_SET);
 	
 		DefaultChainableDirectedComponentActivation output = componentChain.forwardPropagate(input, mockDirectedComponentsContext);
 		
