@@ -88,4 +88,9 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 				.withComponentDefinition(new InceptionV4TailDefinition(weightsLoader));
 
 	}
+
+	@Override
+	public String getName() {
+		return "inception_v4_graph";
+	}
 }

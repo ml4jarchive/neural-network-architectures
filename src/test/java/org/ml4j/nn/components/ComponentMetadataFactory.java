@@ -3,6 +3,7 @@ package org.ml4j.nn.components;
 import java.util.List;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
@@ -21,81 +22,81 @@ import org.ml4j.nn.neurons.Neurons3D;
 public class ComponentMetadataFactory implements NeuralComponentFactory<ComponentMetadata>{
 
 	@Override
-	public ComponentMetadata createAveragePoolingAxonsComponent(Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2) {
-		return new ComponentMetadata(arg0, arg1, "Average Pooling Axons");
+	public ComponentMetadata createAveragePoolingAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2) {
+		return new ComponentMetadata(name, arg0, arg1, "Average Pooling Axons:" + name);
 	}
 
 	@Override
-	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(N arg0, N arg1) {
-		return new ComponentMetadata(arg0, arg1, "Batch Norm Axons");
+	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(String name, N arg0, N arg1) {
+		return new ComponentMetadata(name, arg0, arg1, "Batch Norm Axons:" + name);
 	}
 
 	@Override
-	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(N arg0, N arg1, Matrix arg2, Matrix arg3,
+	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(String name, N arg0, N arg1, Matrix arg2, Matrix arg3,
 			Matrix arg4, Matrix arg5) {
-		return new ComponentMetadata(arg0, arg1, "Batch Norm Axons");
+		return new ComponentMetadata(name, arg0, arg1, "Batch Norm Axons:" + name);
 	}
 
 	@Override
-	public ComponentMetadata createConvolutionalAxonsComponent(Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2,
+	public ComponentMetadata createConvolutionalAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2,
 			Matrix arg3, Matrix arg4) {
-		return new ComponentMetadata(arg0, arg1, "Convolutional Axons");
+		return new ComponentMetadata(name, arg0, arg1, "Convolutional Axons:" + name);
 	}
 
 	@Override
-	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(Neurons3D arg0, Neurons3D arg1) {
-		return new ComponentMetadata(arg0, arg1, "Convolutional Batch Norm Axons");
+	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1) {
+		return new ComponentMetadata(name, arg0, arg1, "Convolutional Batch Norm Axons:" + name);
 	}
 
 	@Override
-	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(Neurons3D arg0, Neurons3D arg1, Matrix arg2,
+	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Matrix arg2,
 			Matrix arg3, Matrix arg4, Matrix arg5) {
-		return new ComponentMetadata(arg0, arg1 ,"Convolutional Batch Norm Axons");
+		return new ComponentMetadata(name, arg0, arg1 ,"Convolutional Batch Norm Axons:" + name);
 	}
 
 	@Override
-	public ComponentMetadata createDifferentiableActivationFunctionComponent(Neurons arg0,
+	public ComponentMetadata createDifferentiableActivationFunctionComponent(String name, Neurons arg0,
 			DifferentiableActivationFunction arg1) {
-		return new ComponentMetadata(arg0, arg0, "Activation Function:" + arg1.getClass());
+		return new ComponentMetadata(name, arg0, arg0, "Activation Function:" + arg1.getClass() + ":" + name);
 	}
 	
 	@Override
-	public ComponentMetadata createDifferentiableActivationFunctionComponent(Neurons arg0,
-			ActivationFunctionType arg1) {
-		return new ComponentMetadata(arg0, arg0, "Activation Function:" + arg1.getQualifiedId());
+	public ComponentMetadata createDifferentiableActivationFunctionComponent(String name, Neurons arg0,
+			ActivationFunctionType arg1, ActivationFunctionProperties activationFunctionProperties) {
+		return new ComponentMetadata(name, arg0, arg0, "Activation Function:" + arg1.getQualifiedId() + ":" + name);
 	}
 
 	@Override
 	public ComponentMetadata createDirectedComponentBipoleGraph(Neurons arg0, Neurons arg1,
 			List<ComponentMetadata> arg2, PathCombinationStrategy arg3) {
-		return new ComponentMetadata(arg0, arg1, "Bipole Graph with strategy:" + arg3);
+		return new ComponentMetadata("BipoleGraph", arg0, arg1, "Bipole Graph with strategy:" + arg3);
 	}
 
 	@Override
 	public ComponentMetadata createDirectedComponentChain(List<ComponentMetadata> arg0) {
-		return new ComponentMetadata(arg0.get(0).getInputNeurons(), arg0.get(arg0.size() -1).getOutputNeurons(), "Component Chain with " + arg0.size() + " components");
+		return new ComponentMetadata("ComponentChain", arg0.get(0).getInputNeurons(), arg0.get(arg0.size() -1).getOutputNeurons(), "Component Chain with " + arg0.size() + " components");
 	}
 
 	@Override
-	public ComponentMetadata createFullyConnectedAxonsComponent(Neurons arg0, Neurons arg1, Matrix arg2, Matrix arg3) {
-		return new ComponentMetadata(arg0, arg1, "Fully Connected Axons Component");
+	public ComponentMetadata createFullyConnectedAxonsComponent(String name, Neurons arg0, Neurons arg1, Matrix arg2, Matrix arg3) {
+		return new ComponentMetadata(name, arg0, arg1, "Fully Connected Axons Component:" + name);
 	}
 
 	@Override
-	public ComponentMetadata createMaxPoolingAxonsComponent(Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2,
+	public ComponentMetadata createMaxPoolingAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2,
 			boolean arg3) {
-		return new ComponentMetadata(arg0, arg1, "Max Pooling Axons Component");
+		return new ComponentMetadata(name, arg0, arg1, "Max Pooling Axons Component:" + name);
 	}
 
 	@Override
-	public <N extends Neurons> ComponentMetadata createPassThroughAxonsComponent(N arg0, N arg1) {
-		return new ComponentMetadata(arg0, arg1, "Pass through Axons Component");
+	public <N extends Neurons> ComponentMetadata createPassThroughAxonsComponent(String name,N arg0, N arg1) {
+		return new ComponentMetadata(name, arg0, arg1, "Pass through Axons Component:" + name);
 	}
 
 	@Override
-	public <S extends ComponentMetadata> ComponentMetadata createComponent(Neurons arg0, Neurons arg1,
+	public <S extends ComponentMetadata> ComponentMetadata createComponent(String name, Neurons arg0, Neurons arg1,
 			NeuralComponentType<S> componentType) {
-		return new ComponentMetadata(arg0, arg1, "Component type:" + componentType);
+		return new ComponentMetadata(name, arg0, arg1, "Component type:" + componentType + ":" + name);
 	}
 	
 }
