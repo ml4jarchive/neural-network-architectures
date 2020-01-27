@@ -16,6 +16,7 @@
 package org.ml4j.nn.architectures.inception.inceptionv4.modules;
 
 import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
+import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.architectures.inception.inceptionv4.InceptionV4WeightsLoader;
 import org.ml4j.nn.components.NeuralComponent;
@@ -58,20 +59,25 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start
-					.withAveragePoolingAxons()
+					.withAveragePoolingAxons("average_pooling_5")
 						.withStride(1, 1).withFilterSize(8, 8).withValidPadding()
 						.withConnectionToNeurons(new Neurons3D(1, 1, 1536, false))
-					.withFullyConnectedAxons()
+					.withFullyConnectedAxons("dense_1")
 						.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
 						.withBiasUnit()
 						.withBiases(weightsLoader.getDenseLayerWeights("dense_1_bias0", 1001, 1))
 						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda))
 					.withConnectionToNeurons(new Neurons(1001, false))
-					.withActivationFunction(ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX));
+					.withActivationFunction("softmax_1", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX), new ActivationFunctionProperties());
 	}
 
 	@Override
 	public NeuralComponentType<?> getComponentType() {
 		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
+	}
+
+	@Override
+	public String getName() {
+		return "inceptionv4_tail";
 	}
 }
