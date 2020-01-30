@@ -36,7 +36,7 @@ public class YOLOv2DefinitionMetadataExtractionTest extends YOLOv2DefinitionTest
 		
 		List<ComponentMetadata> sequentialComponents = componentGraph.getComponents();
 		
-		Assert.assertEquals(46, sequentialComponents.size());
+		Assert.assertEquals(48, sequentialComponents.size());
 		
 		for (ComponentMetadata component : sequentialComponents) {
 			LOGGER.debug(component.toString());
