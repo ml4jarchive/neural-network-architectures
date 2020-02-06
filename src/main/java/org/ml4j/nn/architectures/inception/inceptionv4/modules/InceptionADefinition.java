@@ -38,8 +38,6 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 
 	private InceptionV4WeightsLoader weightsLoader;
 	private int inceptionAModuleIndex;
-	private float regularisationLambda;
-	private float batchNormRegularisationLambda;
 	private boolean withFreezeOut;
 
 	public InceptionADefinition(InceptionV4WeightsLoader weightsLoader, int inceptionAModuleIndex) {
@@ -64,7 +62,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + initialComponentIndex + "_kernel0", 1, 1, 384, 96))
 				.withFilterSize(1, 1).withFilterCount(96).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false)).withBatchNormAxons("batch_normalization_" + initialComponentIndex).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + initialComponentIndex + "_beta0", 96))
@@ -73,7 +71,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + initialComponentIndex + "_moving_variance0", 96))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + initialComponentIndex,
 						ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
@@ -82,7 +80,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 1) + "_kernel0", 1, 1, 384, 64))
 				.withFilterSize(1, 1).withFilterCount(64).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 1)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 1) + "_beta0", 64))
@@ -91,7 +89,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 1) + "_moving_variance0", 64))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 1), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 2))
@@ -99,7 +97,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 2) + "_kernel0", 3, 3, 64, 96))
 				.withFilterSize(3, 3).withFilterCount(96).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 2)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 2) + "_beta0", 96))
@@ -108,7 +106,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 2) + "_moving_variance0", 96))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 2), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 3))
@@ -116,7 +114,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 3) + "_kernel0", 1, 1, 384, 64))
 				.withFilterSize(1, 1).withFilterCount(64).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 3)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 3) + "_beta0", 64))
@@ -125,7 +123,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 3) + "_moving_variance0", 64))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 64, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 3), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 4))
@@ -133,7 +131,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 4) + "_kernel0", 3, 3, 64, 96))
 				.withFilterSize(3, 3).withFilterCount(96).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 4)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 4) + "_beta0", 96))
@@ -142,7 +140,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 4) + "_moving_variance0", 96))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 4), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 5))
@@ -150,7 +148,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 5) + "_kernel0", 3, 3, 96, 96))
 				.withFilterSize(3, 3).withFilterCount(96).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 5)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 5) + "_beta0", 96))
@@ -159,7 +157,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 5) + "_moving_variance0", 96))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 5), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 
@@ -169,7 +167,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						"conv2d_" + (initialComponentIndex + 6) + "_kernel0", 1, 1, 384, 96))
 				.withFilterSize(1, 1).withFilterCount(96).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 6)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 6) + "_beta0", 96))
@@ -178,7 +176,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 6) + "_moving_variance0", 96))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 6), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
 				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);

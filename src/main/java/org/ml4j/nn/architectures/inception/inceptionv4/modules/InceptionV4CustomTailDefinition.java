@@ -40,16 +40,18 @@ public class InceptionV4CustomTailDefinition implements Component3DtoNon3DGraphD
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private float regularisationLambda;
 	private int outputNeurons;
 	private WeightsMatrix weights;
 	private BiasMatrix biases;
+	private float regularisationLambda;
+	private float dropoutKeepProbability;
 
 
-	public InceptionV4CustomTailDefinition(int outputNeurons, WeightsMatrix weights, BiasMatrix biases) {
+	public InceptionV4CustomTailDefinition(int outputNeurons, WeightsMatrix weights, BiasMatrix biases, float regularisationLambda, float dropoutKeepProbability) {
 		this.outputNeurons = outputNeurons;
 		this.weights = weights;
 		this.biases = biases;
+		this.dropoutKeepProbability = dropoutKeepProbability;
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class InceptionV4CustomTailDefinition implements Component3DtoNon3DGraphD
 						.withConnectionWeights(weights)
 						.withBiasUnit()
 						.withBiases(biases)
-						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda))
+						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda).withLeftHandInputDropoutKeepProbability(dropoutKeepProbability))
 					.withConnectionToNeurons(new Neurons(outputNeurons, false))
 					.withActivationFunction("softmax_1", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX), new ActivationFunctionProperties());
 	}

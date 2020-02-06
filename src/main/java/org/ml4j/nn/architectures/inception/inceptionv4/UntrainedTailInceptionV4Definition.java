@@ -46,13 +46,18 @@ public class UntrainedTailInceptionV4Definition implements Component3DtoNon3DGra
 	private WeightsMatrix denseWeights;
 	private BiasMatrix denseBiases;
 	private int neuronsCount;
+	protected float regularisationLambda;
+	protected float dropoutKeepPropability;
 
 	public UntrainedTailInceptionV4Definition(
-			InceptionV4WeightsLoader weightsLoader, WeightsMatrix denseWeights, BiasMatrix denseBiases, int neuronsCount) {
+			InceptionV4WeightsLoader weightsLoader, WeightsMatrix denseWeights, BiasMatrix denseBiases, int neuronsCount, 
+			float regularisationLambda, float dropoutKeepPropability) {
 		this.weightsLoader = weightsLoader;
 		this.neuronsCount = neuronsCount;
 		this.denseWeights = denseWeights;
 		this.denseBiases = denseBiases;
+		this.regularisationLambda = regularisationLambda;
+		this.dropoutKeepPropability = dropoutKeepPropability;
 	}
 
 	@Override
@@ -93,7 +98,7 @@ public class UntrainedTailInceptionV4Definition implements Component3DtoNon3DGra
 				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 1))
 				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 2))
 				// ending with final Tail
-				.withComponentDefinition(new InceptionV4CustomTailDefinition(neuronsCount, denseWeights, denseBiases));
+				.withComponentDefinition(new InceptionV4CustomTailDefinition(neuronsCount, denseWeights, denseBiases, regularisationLambda, dropoutKeepPropability));
 
 	}
 
