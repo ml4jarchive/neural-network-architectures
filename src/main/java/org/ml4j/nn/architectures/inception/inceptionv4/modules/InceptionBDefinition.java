@@ -66,11 +66,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false)).withBatchNormAxons("batch_normalization_" + initialComponentIndex).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + initialComponentIndex + "_beta0", 384))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + initialComponentIndex + "_moving_mean0", 384))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + initialComponentIndex + "_moving_variance0", 384))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -83,11 +83,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 1)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 1) + "_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 1) + "_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 1) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -100,11 +100,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 224, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 2)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 2) + "_beta0", 224))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 2) + "_moving_mean0", 224))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 2) + "_moving_variance0", 224))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -117,11 +117,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 3)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 3) + "_beta0", 256))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 3) + "_moving_mean0", 256))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 3) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -134,11 +134,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 4)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 4) + "_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 4) + "_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 4) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -151,11 +151,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 5)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 5) + "_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 5) + "_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 5) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -168,11 +168,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 224, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 6)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 6) + "_beta0", 224))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 6) + "_moving_mean0", 224))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 6) + "_moving_variance0", 224))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -185,11 +185,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 224, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 7)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 7) + "_beta0", 224))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 7) + "_moving_mean0", 224))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 7) + "_moving_variance0", 224))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -202,11 +202,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 8)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 8) + "_beta0", 256))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 8) + "_moving_mean0", 256))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 8) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -220,11 +220,11 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 128, false)).withBatchNormAxons("batch_normalization_" + (initialComponentIndex + 9)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (initialComponentIndex + 9) + "_beta0", 128))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (initialComponentIndex + 9) + "_moving_mean0", 128))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (initialComponentIndex + 9) + "_moving_variance0", 128))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))

@@ -16,6 +16,8 @@
 package org.ml4j.nn.architectures.inception.inceptionv4;
 
 import org.ml4j.Matrix;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 
 /**
  * Interface for helper to load Inception V4 weights
@@ -25,9 +27,18 @@ import org.ml4j.Matrix;
  */
 public interface InceptionV4WeightsLoader {
 	
-	Matrix getDenseLayerWeights(String name, int rows, int columns);
-
-	Matrix getConvolutionalLayerWeights(String name, int width, int height, int inputDepth, int outputDepth);
+	WeightsMatrix getDenseLayerWeights(String name, int rows, int columns);
 	
-	Matrix getBatchNormLayerWeights(String name, int inputDepth);
+	BiasMatrix getDenseLayerBiases(String name, int rows, int columns);
+
+	WeightsMatrix getConvolutionalLayerWeights(String name, int width, int height, int inputDepth, int outputDepth);
+	
+	WeightsMatrix getBatchNormLayerWeights(String name, int inputDepth);
+	
+	BiasMatrix getBatchNormLayerBiases(String name, int inputDepth);
+	
+	Matrix getBatchNormLayerMean(String name, int inputDepth);
+
+	Matrix getBatchNormLayerVariance(String name, int inputDepth);
+
 }

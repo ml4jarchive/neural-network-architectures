@@ -66,11 +66,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false)).withBatchNormAxons("batch_normalization_114").withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (114) + "_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (114) + "_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (114) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -83,11 +83,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 192, false)).withBatchNormAxons("batch_normalization_" + (115)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (115) + "_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (115) + "_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (115) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -100,11 +100,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (116)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (116) + "_beta0", 256))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (116) + "_moving_mean0", 256))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (116) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -117,11 +117,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (117)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (117) + "_beta0", 256))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (117) + "_moving_mean0", 256))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (117) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -134,11 +134,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 320, false)).withBatchNormAxons("batch_normalization_" + (118)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (118) + "_beta0", 320))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (118) + "_moving_mean0", 320))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (118) + "_moving_variance0", 320))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
@@ -151,11 +151,11 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 320, false)).withBatchNormAxons("batch_normalization_" + (119)).withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights(
+				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (119) + "_beta0", 320))
-				.withMean(weightsLoader.getBatchNormLayerWeights(
+				.withMean(weightsLoader.getBatchNormLayerMean(
 						"batch_normalization_" + (119) + "_moving_mean0", 320))
-				.withVariance(weightsLoader.getBatchNormLayerWeights(
+				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (119) + "_moving_variance0", 320))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))

@@ -7,6 +7,8 @@ import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
 import org.ml4j.nn.activationfunctions.DifferentiableActivationFunction;
 import org.ml4j.nn.axons.Axons3DConfig;
+import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.factories.NeuralComponentFactory;
 import org.ml4j.nn.components.manytoone.PathCombinationStrategy;
 import org.ml4j.nn.neurons.Neurons;
@@ -32,14 +34,14 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	}
 
 	@Override
-	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(String name, N arg0, N arg1, Matrix arg2, Matrix arg3,
+	public <N extends Neurons> ComponentMetadata createBatchNormAxonsComponent(String name, N arg0, N arg1, WeightsMatrix arg2, BiasMatrix arg3,
 			Matrix arg4, Matrix arg5) {
 		return new ComponentMetadata(name, arg0, arg1, "Batch Norm Axons:" + name);
 	}
 
 	@Override
 	public ComponentMetadata createConvolutionalAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Axons3DConfig arg2,
-			Matrix arg3, Matrix arg4) {
+			WeightsMatrix arg3, BiasMatrix arg4) {
 		return new ComponentMetadata(name, arg0, arg1, "Convolutional Axons:" + name);
 	}
 
@@ -49,8 +51,8 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	}
 
 	@Override
-	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, Matrix arg2,
-			Matrix arg3, Matrix arg4, Matrix arg5) {
+	public ComponentMetadata createConvolutionalBatchNormAxonsComponent(String name, Neurons3D arg0, Neurons3D arg1, WeightsMatrix arg2,
+			BiasMatrix arg3, Matrix arg4, Matrix arg5) {
 		return new ComponentMetadata(name, arg0, arg1 ,"Convolutional Batch Norm Axons:" + name);
 	}
 
@@ -78,7 +80,7 @@ public class ComponentMetadataFactory implements NeuralComponentFactory<Componen
 	}
 
 	@Override
-	public ComponentMetadata createFullyConnectedAxonsComponent(String name, Neurons arg0, Neurons arg1, Matrix arg2, Matrix arg3) {
+	public ComponentMetadata createFullyConnectedAxonsComponent(String name, Neurons arg0, Neurons arg1, WeightsMatrix arg2, BiasMatrix arg3) {
 		return new ComponentMetadata(name, arg0, arg1, "Fully Connected Axons Component:" + name);
 	}
 
