@@ -41,9 +41,11 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	
 	private InceptionV4WeightsLoader weightsLoader;
 	private float regularisationLambda;
+	private float dropoutKeepProbability;
 
 	public InceptionV4TailDefinition(InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
+		this.dropoutKeepProbability = 1f;
 	}
 
 	@Override
@@ -66,7 +68,7 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 						.withConnectionWeights(weightsLoader.getDenseLayerWeights("dense_1_kernel0", 1001, 1536))
 						.withBiasUnit()
 						.withBiases(weightsLoader.getDenseLayerBiases("dense_1_bias0", 1001, 1))
-						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda))
+						.withAxonsContextConfigurer(c -> c.withRegularisationLambda(regularisationLambda).withLeftHandInputDropoutKeepProbability(dropoutKeepProbability))
 					.withConnectionToNeurons(new Neurons(1001, false))
 					.withActivationFunction("softmax_1", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.SOFTMAX), new ActivationFunctionProperties());
 	}
@@ -79,5 +81,13 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	@Override
 	public String getName() {
 		return "inceptionv4_tail";
+	}
+
+	public void setRegularisationLambda(float regularisationLambda) {
+		this.regularisationLambda = regularisationLambda;
+	}
+
+	public void setDropoutKeepProbability(float dropoutKeepProbability) {
+		this.dropoutKeepProbability = dropoutKeepProbability;
 	}
 }

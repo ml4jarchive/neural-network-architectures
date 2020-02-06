@@ -38,8 +38,6 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 	
 	private InceptionV4WeightsLoader weightsLoader;
 	private boolean withFreezeOut;
-	private float regularisationLambda;
-	private float batchNormRegularisationLambda;
 
 	public ReductionADefinition(InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
@@ -62,52 +60,52 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights("conv2d_40_kernel0", 3, 3, 384, 384))
 				.withStride(2, 2).withFilterCount(384).withValidPadding()
 				.withAxonsContextConfigurer(
-						context -> context.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						context -> context.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false)).withBatchNormAxons("batch_normalization_40").withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_40_beta0", 384))
 				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_40_moving_mean0", 384))
 				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_40_moving_variance0", 384))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false))
 				.withActivationFunction("relu_40", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withConvolutionalAxons("conv2d_41")
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights("conv2d_41_kernel0", 1, 1, 384, 192))
 				.withFilterSize(1, 1).withFilterCount(192).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 192, false)).withBatchNormAxons("batch_normalization_41").withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_41_beta0", 192))
 				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_41_moving_mean0", 192))
 				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_41_moving_variance0", 192))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 192, false))
 				.withActivationFunction("relu_41", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_42")
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights("conv2d_42_kernel0", 3, 3, 192, 224))
 				.withFilterSize(3, 3).withFilterCount(224).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 224, false)).withBatchNormAxons("batch_normalization_42").withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_42_beta0", 224))
 				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_42_moving_mean0", 224))
 				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_42_moving_variance0", 224))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 224, false))
 				.withActivationFunction("relu_42", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_43")
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights("conv2d_43_kernel0", 3, 3, 224, 256))
 				.withStride(2, 2).withFilterSize(3, 3).withFilterCount(256).withValidPadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_43").withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_43_beta0", 256))
 				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_43_moving_mean0", 256))
 				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_43_moving_variance0", 256))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
 				.withActivationFunction("relu_43", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withMaxPoolingAxons("max_pooling_3").withFilterSize(3, 3).withStride(2, 2).withValidPadding()

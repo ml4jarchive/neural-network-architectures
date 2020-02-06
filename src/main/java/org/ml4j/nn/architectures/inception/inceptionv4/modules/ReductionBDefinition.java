@@ -38,8 +38,6 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 	
 	private InceptionV4WeightsLoader weightsLoader;
 	private boolean withFreezeOut;
-	private float regularisationLambda;
-	private float batchNormRegularisationLambda;
 
 	public ReductionBDefinition(InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
@@ -64,7 +62,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (114) + "_kernel0", 1, 1, 1024, 192))
 				.withFilterSize(1, 1).withFilterCount(192).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false)).withBatchNormAxons("batch_normalization_114").withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (114) + "_beta0", 192))
@@ -73,7 +71,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (114) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 192, false))
 				.withActivationFunction("relu_", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_115")
@@ -81,7 +79,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (115) + "_kernel0", 3, 3, 192, 192))
 				.withStride(2, 2).withFilterSize(3, 3).withFilterCount(192).withValidPadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 192, false)).withBatchNormAxons("batch_normalization_" + (115)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (115) + "_beta0", 192))
@@ -90,7 +88,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (115) + "_moving_variance0", 192))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 192, false))
 				.withActivationFunction("relu_" + (115), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withConvolutionalAxons("conv2d_116")
@@ -98,7 +96,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (116) + "_kernel0", 1, 1, 1024, 256))
 				.withFilterSize(1, 1).withFilterCount(256).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (116)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (116) + "_beta0", 256))
@@ -107,7 +105,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (116) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
 				.withActivationFunction("relu_" + (116), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_117")
@@ -115,7 +113,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (117) + "_kernel0", 7, 1, 256, 256))
 				.withFilterSize(7, 1).withFilterCount(256).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_" + (117)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (117) + "_beta0", 256))
@@ -124,7 +122,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (117) + "_moving_variance0", 256))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
 				.withActivationFunction("relu_" + (117), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_118")
@@ -132,7 +130,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (118) + "_kernel0", 1, 7, 256, 320))
 				.withFilterSize(1, 7).withFilterCount(320).withSamePadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 320, false)).withBatchNormAxons("batch_normalization_" + (118)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (118) + "_beta0", 320))
@@ -141,7 +139,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (118) + "_moving_variance0", 320))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 320, false))
 				.withActivationFunction("relu_" + (118), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties())
 				.withConvolutionalAxons("conv2d_119")
@@ -149,7 +147,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 						"conv2d_" + (119) + "_kernel0", 3, 3, 320, 320))
 				.withStride(2, 2).withFilterSize(3, 3).withFilterCount(320).withValidPadding()
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 320, false)).withBatchNormAxons("batch_normalization_" + (119)).withBiasUnit()
 				.withBeta(weightsLoader.getBatchNormLayerBiases(
 						"batch_normalization_" + (119) + "_beta0", 320))
@@ -158,7 +156,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 				.withVariance(weightsLoader.getBatchNormLayerVariance(
 						"batch_normalization_" + (119) + "_moving_variance0", 320))
 				.withAxonsContextConfigurer(
-						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
+						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 320, false))
 				.withActivationFunction("relu_normalization_" + (119), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withMaxPoolingAxons("max_pooling_4").withFilterSize(3, 3).withStride(2, 2).withValidPadding()

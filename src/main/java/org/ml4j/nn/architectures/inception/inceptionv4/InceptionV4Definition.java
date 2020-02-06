@@ -41,10 +41,13 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 	private static final long serialVersionUID = 1L;
 	
 	private InceptionV4WeightsLoader weightsLoader;
+	private float finalDenseLayerRegularisationLambda;
+	private float finalDenseLayerInputDropoutKeepProbability;
 
 	public InceptionV4Definition(
 			InceptionV4WeightsLoader weightsLoader) {
 		this.weightsLoader = weightsLoader;
+		this.finalDenseLayerInputDropoutKeepProbability = 1f;
 	}
 
 	@Override
@@ -60,6 +63,11 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 	@Override
 	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
+		
+		InceptionV4TailDefinition tailDefinition = new InceptionV4TailDefinition(weightsLoader);
+		tailDefinition.setDropoutKeepProbability(finalDenseLayerInputDropoutKeepProbability);
+		tailDefinition.setRegularisationLambda(finalDenseLayerRegularisationLambda);
+		
 		return start
 				// Initial Stem...
 				.withComponentDefinition(new InceptionV4StemDefinition(weightsLoader))
@@ -85,8 +93,15 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 1))
 				.withComponentDefinition(new InceptionCDefinition(weightsLoader, 2))
 				// ending with final Tail
-				.withComponentDefinition(new InceptionV4TailDefinition(weightsLoader));
+				.withComponentDefinition(tailDefinition);
+	}
 
+	public void setFinalDenseLayerRegularisationLambda(float finalDenseLayerRegularisationLambda) {
+		this.finalDenseLayerRegularisationLambda = finalDenseLayerRegularisationLambda;
+	}
+
+	public void setFinalDenseLayerInputDropoutKeepProbability(float finalDenseLayerInputDropoutKeepProbability) {
+		this.finalDenseLayerInputDropoutKeepProbability = finalDenseLayerInputDropoutKeepProbability;
 	}
 
 	@Override
