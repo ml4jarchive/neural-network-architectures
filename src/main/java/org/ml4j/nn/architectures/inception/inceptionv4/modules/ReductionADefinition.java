@@ -64,9 +64,9 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						context -> context.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false)).withBatchNormAxons("batch_normalization_40").withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights("batch_normalization_40_beta0", 384))
-				.withMean(weightsLoader.getBatchNormLayerWeights("batch_normalization_40_moving_mean0", 384))
-				.withVariance(weightsLoader.getBatchNormLayerWeights("batch_normalization_40_moving_variance0", 384))
+				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_40_beta0", 384))
+				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_40_moving_mean0", 384))
+				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_40_moving_variance0", 384))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false))
@@ -77,9 +77,9 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 192, false)).withBatchNormAxons("batch_normalization_41").withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights("batch_normalization_41_beta0", 192))
-				.withMean(weightsLoader.getBatchNormLayerWeights("batch_normalization_41_moving_mean0", 192))
-				.withVariance(weightsLoader.getBatchNormLayerWeights("batch_normalization_41_moving_variance0", 192))
+				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_41_beta0", 192))
+				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_41_moving_mean0", 192))
+				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_41_moving_variance0", 192))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 192, false))
@@ -90,9 +90,9 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 224, false)).withBatchNormAxons("batch_normalization_42").withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights("batch_normalization_42_beta0", 224))
-				.withMean(weightsLoader.getBatchNormLayerWeights("batch_normalization_42_moving_mean0", 224))
-				.withVariance(weightsLoader.getBatchNormLayerWeights("batch_normalization_42_moving_variance0", 224))
+				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_42_beta0", 224))
+				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_42_moving_mean0", 224))
+				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_42_moving_variance0", 224))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 224, false))
@@ -103,9 +103,9 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(regularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false)).withBatchNormAxons("batch_normalization_43").withBiasUnit()
-				.withBeta(weightsLoader.getBatchNormLayerWeights("batch_normalization_43_beta0", 256))
-				.withMean(weightsLoader.getBatchNormLayerWeights("batch_normalization_43_moving_mean0", 256))
-				.withVariance(weightsLoader.getBatchNormLayerWeights("batch_normalization_43_moving_variance0", 256))
+				.withBeta(weightsLoader.getBatchNormLayerBiases("batch_normalization_43_beta0", 256))
+				.withMean(weightsLoader.getBatchNormLayerMean("batch_normalization_43_moving_mean0", 256))
+				.withVariance(weightsLoader.getBatchNormLayerVariance("batch_normalization_43_moving_variance0", 256))
 				.withAxonsContextConfigurer(
 						c -> c.withRegularisationLambda(batchNormRegularisationLambda).withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 256, false))
