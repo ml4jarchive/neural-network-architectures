@@ -15,6 +15,8 @@
  */
 package org.ml4j.nn.architectures.inception.inceptionv4;
 
+import java.io.Serializable;
+
 import org.ml4j.Matrix;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
@@ -25,7 +27,7 @@ import org.ml4j.nn.axons.WeightsMatrix;
  * @author Michael Lavelle
  *
  */
-public interface InceptionV4WeightsLoader {
+public interface InceptionV4WeightsLoader extends Serializable {
 	
 	WeightsMatrix getDenseLayerWeights(String name, int rows, int columns);
 	

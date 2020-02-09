@@ -15,6 +15,8 @@
  */
 package org.ml4j.nn.architectures.yolo.yolov2;
 
+import java.io.Serializable;
+
 import org.ml4j.Matrix;
 import org.ml4j.nn.axons.BiasMatrix;
 import org.ml4j.nn.axons.WeightsMatrix;
@@ -25,7 +27,7 @@ import org.ml4j.nn.axons.WeightsMatrix;
  * @author Michael Lavelle
  *
  */
-public interface YOLOv2WeightsLoader {
+public interface YOLOv2WeightsLoader extends Serializable {
 	
 	WeightsMatrix getConvolutionalLayerWeights(String name, int width, int height, int inputDepth, int outputDepth);
 	BiasMatrix getConvolutionalLayerBiases(String name, int outputDepth);

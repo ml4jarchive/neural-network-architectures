@@ -42,7 +42,7 @@ public class YOLOv2Definition implements Component3Dto3DGraphDefinition {
 	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		
-		NeuralComponentType<T> spaceToDepthComponentType
+		NeuralComponentType spaceToDepthComponentType
 			= NeuralComponentType.createSubType(NeuralComponentBaseType.AXONS, "SPACE_TO_DEPTH");
 		
 		// input_1
