@@ -74,7 +74,7 @@ public class InceptionV4TailDefinition implements Component3DtoNon3DGraphDefinit
 	}
 
 	@Override
-	public NeuralComponentType<?> getComponentType() {
+	public NeuralComponentType getComponentType() {
 		return NeuralComponentType.getBaseType(NeuralComponentBaseType.DEFINITION);
 	}
 
