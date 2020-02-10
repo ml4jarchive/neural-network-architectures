@@ -228,7 +228,7 @@ public class InceptionBDefinition implements InceptionModuleDefinition {
 						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(17, 17, 128, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 9), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
+				.endParallelPaths("inception_b_concat_" + inceptionBModuleIndex, PathCombinationStrategy.FILTER_CONCAT);
 	}
 
 	@Override

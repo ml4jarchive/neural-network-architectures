@@ -179,7 +179,7 @@ public class InceptionADefinition implements InceptionModuleDefinition {
 						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(35, 35, 96, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 6), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
+				.endParallelPaths("inception_a_concat_" + inceptionAModuleIndex, PathCombinationStrategy.FILTER_CONCAT);
 		
 	}
 
