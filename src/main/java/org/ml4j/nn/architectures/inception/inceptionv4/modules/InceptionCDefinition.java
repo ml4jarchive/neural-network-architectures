@@ -126,7 +126,7 @@ public class InceptionCDefinition implements InceptionModuleDefinition {
 						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 256, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 3), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT).endPath().withPath()
+				.endParallelPaths("inception_c_concat_" + inceptionCModuleIndex + "_0", PathCombinationStrategy.FILTER_CONCAT).endPath().withPath()
 				// 124
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 4))
 				.withConnectionWeights(weightsLoader.getConvolutionalLayerWeights(
@@ -214,7 +214,7 @@ public class InceptionCDefinition implements InceptionModuleDefinition {
 						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 256, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 8), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT).endPath().withPath().withAveragePoolingAxons("average_pooling_4")
+				.endParallelPaths("inception_c_concat_" + inceptionCModuleIndex + "_1", PathCombinationStrategy.FILTER_CONCAT).endPath().withPath().withAveragePoolingAxons("average_pooling_4")
 				.withFilterSize(3, 3).withStride(1, 1).withSamePadding()
 				.withConnectionToNeurons(new Neurons3D(8, 8, 1536, false))
 				.withConvolutionalAxons("conv2d_" + (initialComponentIndex + 9))
@@ -234,7 +234,7 @@ public class InceptionCDefinition implements InceptionModuleDefinition {
 						c -> c.withFreezeOut(withFreezeOut))
 				.withConnectionToNeurons(new Neurons3D(8, 8, 256, false))
 				.withActivationFunction("relu_" + (initialComponentIndex + 9), ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
+				.endParallelPaths("inception_c_concat_" + inceptionCModuleIndex, PathCombinationStrategy.FILTER_CONCAT);
 	}
 	
 	@Override

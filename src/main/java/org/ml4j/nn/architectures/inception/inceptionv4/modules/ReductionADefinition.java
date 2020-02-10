@@ -110,7 +110,7 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 				.withActivationFunction("relu_43", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.RELU), new ActivationFunctionProperties()).endPath().withPath()
 				.withMaxPoolingAxons("max_pooling_3").withFilterSize(3, 3).withStride(2, 2).withValidPadding()
 				.withConnectionToNeurons(new Neurons3D(17, 17, 384, false)).endPath()
-				.endParallelPaths(PathCombinationStrategy.FILTER_CONCAT);
+				.endParallelPaths("reduction_a_concat_0", PathCombinationStrategy.FILTER_CONCAT);
 	}
 
 	@Override
