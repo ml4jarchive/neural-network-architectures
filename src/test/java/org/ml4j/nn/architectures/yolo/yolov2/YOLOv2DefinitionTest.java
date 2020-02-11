@@ -50,8 +50,9 @@ public class YOLOv2DefinitionTest extends YOLOv2DefinitionTestBase<DefaultChaina
 		List<DefaultChainableDirectedComponent<?, ?>> sequentialComponents = componentGraph.getComponents();
 		
 		Assert.assertEquals(48, sequentialComponents.size());
-		
+	
 		int index = 0;
+	
 		for (DefaultChainableDirectedComponent<?, ?> component : sequentialComponents) {
 			LOGGER.debug("Component:" + index++ + ":" + component.getComponentType() + ": Input Neurons: " + component.getInputNeurons());
 		}

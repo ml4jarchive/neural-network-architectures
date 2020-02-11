@@ -53,7 +53,7 @@ public class ReductionADefinition implements Component3Dto3DGraphDefinition {
 		return new Neurons3D(17, 17, 1024, false);
 	}
 
-	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponents3DGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		
 		return start.withParallelPaths().withPath().withConvolutionalAxons("conv2d_40").withFilterSize(3, 3)

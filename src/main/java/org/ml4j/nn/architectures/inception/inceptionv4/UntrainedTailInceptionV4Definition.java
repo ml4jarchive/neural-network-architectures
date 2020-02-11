@@ -71,7 +71,7 @@ public class UntrainedTailInceptionV4Definition implements Component3DtoNon3DGra
 	}
 
 	@Override
-	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start
 				// Initial Stem...

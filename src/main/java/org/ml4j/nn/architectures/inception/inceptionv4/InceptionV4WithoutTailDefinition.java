@@ -58,7 +58,7 @@ public class InceptionV4WithoutTailDefinition implements Component3Dto3DGraphDef
 	}
 
 	@Override
-	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponents3DGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start
 				// Initial Stem...
