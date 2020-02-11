@@ -51,7 +51,7 @@ public class InceptionCDefinition implements InceptionModuleDefinition {
 	}
 
 	@Override
-	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponents3DGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		
 		int initialComponentIndex = inceptionCModuleIndex * 10 + 120;

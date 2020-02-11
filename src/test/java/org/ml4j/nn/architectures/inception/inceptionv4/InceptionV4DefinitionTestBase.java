@@ -11,7 +11,7 @@ import org.ml4j.nn.sessions.Session;
 import org.ml4j.nn.sessions.SessionImpl;
 import org.mockito.Mock;
 
-public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent> extends Component3DtoNon3DGraphDefinitionTestBase<T, InceptionV4Definition> {
+public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent<?>> extends Component3DtoNon3DGraphDefinitionTestBase<T, InceptionV4Definition> {
 	
 	@Mock
 	protected InceptionV4WeightsLoader mockInceptionV4WeightsLoader;

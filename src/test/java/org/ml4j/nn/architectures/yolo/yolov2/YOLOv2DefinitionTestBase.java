@@ -9,7 +9,7 @@ import org.ml4j.nn.sessions.Session;
 import org.ml4j.nn.sessions.SessionImpl;
 import org.mockito.Mock;
 
-public abstract class YOLOv2DefinitionTestBase<T extends NeuralComponent> extends Component3Dto3DGraphDefinitionTestBase<T, YOLOv2Definition> {
+public abstract class YOLOv2DefinitionTestBase<T extends NeuralComponent<?>> extends Component3Dto3DGraphDefinitionTestBase<T, YOLOv2Definition> {
 	
 	@Mock
 	protected YOLOv2WeightsLoader mockYOLOv2WeightsLoader;

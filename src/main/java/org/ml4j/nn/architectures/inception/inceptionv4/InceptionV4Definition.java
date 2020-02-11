@@ -61,7 +61,7 @@ public class InceptionV4Definition implements Component3DtoNon3DGraphDefinition 
 	}
 
 	@Override
-	public <T extends NeuralComponent> InitialComponentsGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponentsGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		
 		InceptionV4TailDefinition tailDefinition = new InceptionV4TailDefinition(weightsLoader);

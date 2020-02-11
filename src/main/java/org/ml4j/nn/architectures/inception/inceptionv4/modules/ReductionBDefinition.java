@@ -53,7 +53,7 @@ public class ReductionBDefinition implements Component3Dto3DGraphDefinition {
 		return new Neurons3D(8, 8, 1536, false);
 	}
 
-	public <T extends NeuralComponent> InitialComponents3DGraphBuilder<T> createComponentGraph(
+	public <T extends NeuralComponent<?>> InitialComponents3DGraphBuilder<T> createComponentGraph(
 			InitialComponents3DGraphBuilder<T> start, NeuralComponentFactory<T> neuralComponentFactory) {
 		return start
 				.withParallelPaths().withPath()

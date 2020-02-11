@@ -10,7 +10,7 @@ import org.ml4j.nn.neurons.Neurons;
  * 
  * @author Michael Lavelle
  */
-public class ComponentMetadata extends NeuralComponentAdapter<Neurons, Neurons> implements NeuralComponent {
+public class ComponentMetadata extends NeuralComponentAdapter<Neurons, Neurons, ComponentMetadata> implements NeuralComponent<ComponentMetadata> {
 	
 	/**
 	 * Default serialization id.
@@ -35,5 +35,10 @@ public class ComponentMetadata extends NeuralComponentAdapter<Neurons, Neurons> 
 	public String toString() {
 		return "ComponentMetadata [inputNeurons=" + inputNeurons + ", outputNeurons=" + outputNeurons + ", description="
 				+ description + "]";
+	}
+
+	@Override
+	public String accept(NeuralComponentVisitor<ComponentMetadata> visitor) {
+		return visitor.visitComponent(this);
 	}
 }
