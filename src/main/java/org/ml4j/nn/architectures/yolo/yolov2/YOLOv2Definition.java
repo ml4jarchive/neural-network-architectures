@@ -423,7 +423,10 @@ public class YOLOv2Definition implements Component3Dto3DGraphDefinition {
 				.withBiasUnit()
 				.withBiases(weightsLoader.getConvolutionalLayerBiases("conv2d_23_bias0", 425))
 				.withSamePadding()
-				.withConnectionToNeurons(new Neurons3D(19, 19, 425, false));
+				.withConnectionToNeurons(new Neurons3D(19, 19, 425, false)) // End with a linear activation function so that this 
+				// // End with a linear activation function so that this definition can be used as a neural network.
+				.withActivationFunction("noOpActivationFunction", ActivationFunctionType.getBaseType(ActivationFunctionBaseType.LINEAR), 
+						new ActivationFunctionProperties());
 	}
 	
 	@Override
