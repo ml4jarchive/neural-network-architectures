@@ -18,7 +18,7 @@ package org.ml4j.nn.architectures.inception.inceptionv4.modules;
 import org.ml4j.nn.activationfunctions.ActivationFunctionBaseType;
 import org.ml4j.nn.activationfunctions.ActivationFunctionProperties;
 import org.ml4j.nn.activationfunctions.ActivationFunctionType;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.NeuralComponentBaseType;
@@ -42,12 +42,12 @@ public class InceptionV4CustomTailDefinition implements Component3DtoNon3DGraphD
 	
 	private int outputNeurons;
 	private WeightsMatrix weights;
-	private BiasMatrix biases;
+	private BiasVector biases;
 	private float regularisationLambda;
 	private float dropoutKeepProbability;
 
 
-	public InceptionV4CustomTailDefinition(int outputNeurons, WeightsMatrix weights, BiasMatrix biases, float regularisationLambda, float dropoutKeepProbability) {
+	public InceptionV4CustomTailDefinition(int outputNeurons, WeightsMatrix weights, BiasVector biases, float regularisationLambda, float dropoutKeepProbability) {
 		this.outputNeurons = outputNeurons;
 		this.weights = weights;
 		this.biases = biases;

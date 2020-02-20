@@ -17,8 +17,8 @@ package org.ml4j.nn.architectures.inception.inceptionv4;
 
 import java.io.Serializable;
 
-import org.ml4j.Matrix;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BiasVector;
+import org.ml4j.nn.axons.FeaturesVector;
 import org.ml4j.nn.axons.WeightsMatrix;
 
 /**
@@ -31,16 +31,16 @@ public interface InceptionV4WeightsLoader extends Serializable {
 	
 	WeightsMatrix getDenseLayerWeights(String name, int rows, int columns);
 	
-	BiasMatrix getDenseLayerBiases(String name, int rows, int columns);
+	BiasVector getDenseLayerBiases(String name, int rows, int columns);
 
 	WeightsMatrix getConvolutionalLayerWeights(String name, int width, int height, int inputDepth, int outputDepth);
 	
-	WeightsMatrix getBatchNormLayerWeights(String name, int inputDepth);
+	WeightsMatrix getBatchNormLayerWeights(String name, int outputDepth);
 	
-	BiasMatrix getBatchNormLayerBiases(String name, int inputDepth);
+	BiasVector getBatchNormLayerBiases(String name, int outputDepth);
 	
-	Matrix getBatchNormLayerMean(String name, int inputDepth);
+	FeaturesVector getBatchNormLayerMean(String name, int outputDepth);
 
-	Matrix getBatchNormLayerVariance(String name, int inputDepth);
+	FeaturesVector getBatchNormLayerVariance(String name, int outputDepth);
 
 }
