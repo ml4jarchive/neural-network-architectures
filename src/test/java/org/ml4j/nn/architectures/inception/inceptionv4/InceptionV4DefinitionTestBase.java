@@ -21,6 +21,8 @@ public abstract class InceptionV4DefinitionTestBase<T extends NeuralComponent<?>
 
 	@Test
 	public void testComponentGraphCreation() {
+		
+		
 	
 		// Start new session, given the component factory and the runtime context.
 		Session<T> session = new SessionImpl<>(neuralComponentFactory, mockDirectedComponentsContext);

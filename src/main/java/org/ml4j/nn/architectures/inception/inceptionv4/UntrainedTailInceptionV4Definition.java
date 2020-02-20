@@ -22,7 +22,7 @@ import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionV4Custom
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.InceptionV4StemDefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.ReductionADefinition;
 import org.ml4j.nn.architectures.inception.inceptionv4.modules.ReductionBDefinition;
-import org.ml4j.nn.axons.BiasMatrix;
+import org.ml4j.nn.axons.BiasVector;
 import org.ml4j.nn.axons.WeightsMatrix;
 import org.ml4j.nn.components.NeuralComponent;
 import org.ml4j.nn.components.builders.componentsgraph.InitialComponents3DGraphBuilder;
@@ -44,13 +44,13 @@ public class UntrainedTailInceptionV4Definition implements Component3DtoNon3DGra
 	
 	private InceptionV4WeightsLoader weightsLoader;
 	private WeightsMatrix denseWeights;
-	private BiasMatrix denseBiases;
+	private BiasVector denseBiases;
 	private int neuronsCount;
 	protected float regularisationLambda;
 	protected float dropoutKeepPropability;
 
 	public UntrainedTailInceptionV4Definition(
-			InceptionV4WeightsLoader weightsLoader, WeightsMatrix denseWeights, BiasMatrix denseBiases, int neuronsCount, 
+			InceptionV4WeightsLoader weightsLoader, WeightsMatrix denseWeights, BiasVector denseBiases, int neuronsCount, 
 			float regularisationLambda, float dropoutKeepPropability) {
 		this.weightsLoader = weightsLoader;
 		this.neuronsCount = neuronsCount;
